@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-// import About from './components/About'; 
+import About from './components/About'; 
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -33,22 +33,26 @@ function App() {
 
   return (
     <>
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
 
-          {/* <Routes> */}
-          {/* exact means exact path if we dont use exact then react uses partial matching. */}
-            {/* <Route exact path="/about" element={<About/>} />  */}
+          <Routes>
+          {/* {exact means exact path if we dont use exact then react uses partial matching. } */}
+            { <Route exact path="/about" 
+                element={<About mode={mode}/>} /> 
+            }
 
-            {/* <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter Text Here" mode={mode} />} />
+            {<Route exact path="/"
+                element={<TextForm showAlert={showAlert} heading="TextUtils - Word Counter, Character Counter, Remove Extra Spaces" mode={mode} />} />
+            }
             
 
-          </Routes> */}
-          <TextForm showAlert={showAlert} heading="Enter Text Here" mode={mode} />
+          </Routes> 
+         
         </div>
-      {/* </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 }
